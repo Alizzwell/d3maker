@@ -1,0 +1,49 @@
+#body {
+  padding-top: 70px;
+}
+
+html {
+  font-family: Monaco, Monospace;
+  fill: #111;
+  padding:20px;
+}
+
+
+
+
+
+ul#algo li {
+  width: 300px;
+}
+
+svg {
+  font-size: 40px;
+}
+
+.breakpoints { width: 1.0em; }
+.breakpoint { color: #822; }
+.CodeMirror { border: 1px solid #aaa; }
+	  	  
+.CodeMirror { border-top: 1px solid black; border-bottom: 1px solid black; }
+.CodeMirror-selected  { background-color: blue !important; }
+.CodeMirror-selectedtext { color: white; }
+.styled-background { background-color: #0ff; }
+
+.CodeMirror-readonly .CodeMirror-cursor {
+  display: none !important
+}
+
+.CodeMirror {
+  border-top: 1px solid black; 
+  border-bottom: 1px solid black; 
+  border-left: 1px solid black; 
+  border-right: 1px solid black;
+}
+
+.comma { fill:green; }
+.text { fill:blue; }
+.parens { fill:red; }
+
+#canvas {
+  padding-left: 50px;
+}

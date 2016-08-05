@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=11">
+
+	<link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheets/codemirror.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
+	
+	<script src="javascripts/jquery-2.2.4.min.js"></script>
+    <script src="javascripts/angular.min.js"></script>
+	<script src="javascripts/bootstrap.min.js"></script>
+
+	<script src="javascripts/this-play.min.js"></script>
+
+	<script src="javascripts/codemirror/codemirror.js"></script>
+	<script src="javascripts/codemirror/mode/scheme.js"></script>
+    <script src="javascripts/codemirror/mode/javascript.js"></script>
+    <script src="javascripts/codemirror/mode/xml.js"></script>
+    <script src="javascripts/codemirror/mode/clike.js"></script>
+    <script src="javascripts/codemirror/addon/closebrackets.js"></script>
+	<script src="javascripts/codemirror/addon/active-line.js"></script>
+	<script src="javascripts/codemirror/addon/searchcursor.js"></script>
+	<script src="javascripts/codemirror/addon/mark-selection.js"></script>
+	<script src="javascripts/codemirror/addon/autorefresh.js"></script>
+</head>
+
+<body ng-app="algorithms.view" >
+	
+	<div  id="body" class="container-fluid">
+		<div class="wrapper" ng-controller="ViewCtrl" ng-cloak>
+			<div ng-if="page=='input'">
+				<div class="row">
+					<div class="col-md-12">
+						<h4>Source Code</h4>
+						<div class="btn-group">
+							<label class="btn btn-primary" ng-model="mode" uib-btn-radio="'text/x-csrc'">C</label>
+							<label class="btn btn-primary" ng-model="mode" uib-btn-radio="'text/x-c++src'">C++</label>
+							<label class="btn btn-primary" ng-model="mode" uib-btn-radio="'text/x-java'">Java</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<textarea id="inputEdit" ng-init="initInputEdit()"></textarea>
+					</div>
+				</div>
+				<div class="row" style="margin-top:20px;">
+					<div class="col-md-12">
+						<h4>Input Data</h4>
+						<textarea ng-model="data.inputData" class="form-control"></textarea>
+					</div>
+				</div>
+
+				<div class="row" style="margin-top:20px;">
+					<div class="col-md-12">
+						<h4>Target Data</h4>
+						<input type="text" ng-model="data.targets" class="form-control">
+					</div>
+				</div>
+
+				<div class="row" style="margin-top:50px; text-align:center;">
+					<div class="col-md-12">
+						<button type="button" class="btn btn-primary" ng-click=btnUploadClk()
+							style="width:500px; height:50px;">Upload</button>
+					</div>
+				</div>
+			</div>
+			
+			<div ng-if="page=='view'">
+				<div class="page-header">
+					<label class="btn btn-primary" ng-click="btnHomeClk()">Home</label>
+					<label class="btn btn-primary" ng-click="btnInputClk()">Input</label>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<span>input</span>
+						<textarea ng-model="data.inputData" ng-readonly="true" class="form-control"></textarea>
+						<span>target</span>
+						<input type="text" ng-model="data.targets" ng-readonly="true" class="form-control">
+						<span>code</span>
+						<textarea id="outputEdit" ng-init="initOutputEdit()"></textarea>
+						<button type="button" class="btn btn-primary" ng-click="btnStepClk()">Step</button>
+						<button type="button" class="btn btn-primary" ng-click="btnNextClk()">Next</button>
+					</div>
+					<div class="col-md-9" ng-init="initCanvas()" id="canvas">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ////////// 여기에 작성 /////////// -->
+	<script src="http://d3js.org/d3.v2.min.js"></script>
+	<link rel="stylesheet" href="test/style.css">
+	<script src="test/script.js"></script>
+	<!-- ////////////////////////////////// -->
+
+
+	<script src="javascripts/angular-animate.js"></script>
+	<script src="javascripts/ui-bootstrap-tpls-1.3.3.js"></script>
+	<script src="javascripts/codemirror/ui-codemirror.min.js"></script>
+	<script src="javascripts/modules/algorithms.view.js"></script>
+
+</body>
+
+</html>

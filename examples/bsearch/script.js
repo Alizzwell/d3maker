@@ -42,18 +42,22 @@ var container;
    }
    
    if(info['l']){
-       translate_low_animation(value,low,mid,function(){
+     
+       translate_low_animation(value,info['l'].before,mid,function(){
           drawArray(value,low,high);
        });
    }
    if(info['h']){
-       translate_high_animation(value,mid,high,function(){
+   
+       translate_high_animation(value,mid,info['h'].before,function(){
           drawArray(value,low,high);
        });
    }  
 }
 
 function translate_low_animation(value, low, mid, done){
+
+ 
   var duration = (mid-low)*100;
 
   for(var i = low; i < mid; i++){
@@ -72,7 +76,6 @@ function translate_low_animation(value, low, mid, done){
 
 function translate_high_animation(value, mid, high, done){
   var duration = (high-mid)*100;
-    
   for(var i = high; i >= mid + 1; i--){
       d3.select("#rectIdx"+i)
       .transition()
@@ -101,7 +104,8 @@ function highlight_mid(value, mid, done){
   .text("mid")
   .attr("x",function(){return -rectWidth/5;})
   .attr("y",30)
-  .attr("fill","#6B7A8F");
+  .attr("fill","#6B7A8F")
+  .attr("font-size","14px");
 
     
   arrow.attr("transform","translate("+ (100+(padding+rectWidth)*mid + rectWidth/3)+","+(rectHeight+100)+")");
@@ -130,7 +134,8 @@ function unhighlight_mid(value, mid, done){
     .text("mid")
     .attr("x",function(){return -rectWidth/5;})
     .attr("y",30)
-    .attr("fill","#6B7A8F");
+    .attr("fill","#6B7A8F")
+    .attr("font-size","14px");
 
     
     arrow.attr("transform","translate("+ (100+(padding+rectWidth)*mid + rectWidth/3)+","+(rectHeight+100)+")");
@@ -187,6 +192,6 @@ function unhighlight_mid(value, mid, done){
         .attr("x",function(d,i){return 100+(padding+rectWidth)*i+rectWidth/4;})
         .attr("y",100+rectHeight/3*2)
         .attr("fill","black")
-        .attr("font-size", "12px");
+        .attr("font-size", "14px");
         
 }

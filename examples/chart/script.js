@@ -80,8 +80,22 @@ function onStep(scheduler) {
 }
 
 function onChange(scheduler, info) {
-	console.log(JSON.stringify(info));
-	update(info['A'].data);
+	console.log(scheduler.getTargets());
+	if (info['s1'] || info['s2']) {
+		swap(scheduler.getTarget('A').data, 
+			scheduler.getTarget('s1').data, 
+			scheduler.getTarget('s2').data);
+	}
+	else if (info['A']) {
+		update(info['A'].data);
+	}
+}
+
+function onFinish() {
+	svg.selectAll(".bar")
+		.style("fill", function(d, idx) {
+			return "orange";
+		});
 }
 
 function update(arr) {
@@ -94,4 +108,29 @@ function update(arr) {
 		.attr("width", x.rangeBand())
 		.attr("y", function(d) { return y(d); })
 		.attr("height", function(d) { return height - y(d); });
+}
+
+function swap(arr, i, j) {
+	svg.selectAll(".bar")
+		.data(arr)
+		.style("fill", function(d, idx) {
+			if (idx == i || idx == j)
+				return "orchid";
+		})
+		.transition()
+		.duration(duration)
+		.attr("x", function(d, idx) { 
+			if (idx == i)
+				return x(j);
+			else if (idx == j)
+				return x(i);
+			else
+				return x(idx);
+		})
+		.each("end", function(d, idx) {
+				svg.selectAll(".bar")
+					.attr("x", function(d, idx) { return x(idx); })
+					.attr("y", function(d) { return y(d); })
+			        .attr("height", function(d) { return height - y(d); });
+		});
 }

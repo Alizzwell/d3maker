@@ -56,7 +56,7 @@ function push_animation(value, top, done) {
 		.attr("y",100)
 		.attr("width",rectWidth)
 		.attr("height",rectHeight)
-		.attr("fill","#BCBABE")
+		.attr("fill","#f8bbd0")
 		.attr("rx",2)
 		.attr("ry",2);
 
@@ -64,7 +64,8 @@ function push_animation(value, top, done) {
 		.text(value[top - 1])
 		.attr("x",315)
 		.attr("y",115)
-		.attr("fill","black");
+		.attr("fill","black")
+		.attr("font-size","12px");
 		
 	var distance = (300-(rectHeight+padding)*(top - 1))-100;
 	newElem.transition()
@@ -91,7 +92,7 @@ function pop_animation(value, top, done) {
 		.attr("y",300-(rectHeight+padding)*(top+1))
 		.attr("width",rectWidth)
 		.attr("height",rectHeight)
-		.attr("fill","#BCBABE")
+		.attr("fill","#f8bbd0")
 		.attr("rx",2)
 		.attr("ry",2);
 
@@ -99,7 +100,8 @@ function pop_animation(value, top, done) {
 		.text(value[top])
 		.attr("x",315)
 		.attr("y",315-(rectHeight+padding)*(top+1))
-		.attr("fill","black");
+		.attr("fill","black")
+		.attr("font-size","12px");
 		
 	var distance = -(300-(rectHeight+padding)*top-100);
 	newElem.transition()
@@ -125,7 +127,9 @@ function drawArray(value, top) {
 		.text(function(d){return d;})
 		.attr("id", function(d,i){return "Idx" +  i;})
 		.attr("x",315)
-		.attr("y",function(d,i){return 300-(rectHeight+padding)*i+15;});
+		.attr("y",function(d,i){return 300-(rectHeight+padding)*i+15;})
+		.attr("font-size","12px");
+
 }
 
 function drawStack(value, top) {
@@ -142,7 +146,7 @@ function drawStack(value, top) {
 		.attr("y",function(d,i){return 300-(rectHeight+padding)*i;})
 		.attr("width",rectWidth)
 		.attr("height",rectHeight)
-		.attr("fill","#BCBABE")
+		.attr("fill","#f8bbd0")
 		.attr("opacity",1.0)
 		.attr("rx",2)
 		.attr("ry",2);

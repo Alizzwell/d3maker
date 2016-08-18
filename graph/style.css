@@ -1,0 +1,40 @@
+.node {
+	fill : black ;
+}
+
+.node_selected {
+	fill : #BADA55;
+	stroke : black;
+	stroke-width : 3;
+}
+
+.nodetext{
+	fill: #fff;
+	text-align: center;
+	font-size = 50px;
+	text-anchor: middle;
+	vertical-align: middle;	
+}
+
+.nodetext_selected {
+	fill: #0010f0;
+	font-size = 50px;
+	text-anchor: middle;
+	vertical-align: text-bottom;	
+}
+
+.link {
+  stroke: #999;
+  stroke-width: 5;
+  cursor: crosshair;
+}
+
+.path {
+  stroke: #999;
+  stroke-width: 5;
+  cursor: crosshair;
+}
+
+.link_selected {
+  stroke: #ff7f0e;
+}

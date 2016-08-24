@@ -1,0 +1,119 @@
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=11">
+		
+	<script type="text/javascript" src="http://mbostock.github.com/d3/d3.js?1.29.1"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.geom.js?1.29.1"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js?1.29.1"></script>
+</head>
+<body>
+	<script src="http://d3js.org/d3.js"></script>
+	<script src="http://d3js.org/d3.v2.min.js"></script>
+	<link rel="stylesheet" href="graph2/style.css">
+	<script src="graph2/graph.js"></script>
+	<script>  var rcount = 1; var f1 = 1, f2 = 2;</script>
+	
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="node_inputbox">
+		<button type="button" id = "node_make_button" > makeNode </button>
+		<script> 
+		
+		document.getElementById("node_make_button").onclick = function() { 
+			var node = Number( document.getElementById("node_inputbox").value ); 
+			makeNode(node);
+		} 
+		
+		</script>
+	</div>
+
+	
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="edge_source_inputbox"> 
+		<input type="text" id="edge_target_inputbox"> 
+		<input type="text" id="edge_value_inputbox"> 
+		<button type="button" id = "edge_make_button" > makeEdge </button>
+		<script> 
+		
+		document.getElementById("edge_make_button").onclick = function() { 
+			var source = Number( document.getElementById("edge_source_inputbox").value ); 
+			var target = Number( document.getElementById("edge_target_inputbox").value ); 
+			var value = Number( document.getElementById("edge_value_inputbox").value ); 
+		
+			if(value > 0 || value <= 0) makeEdge(source, target, value);
+			else makeEdge(source, target, '');
+		} 
+		
+		</script>
+	</div>
+	
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="highLightNode_inputbox"> 
+		<button type="button" id = "highLightNode_button" > HightLightNode </button>
+		<script> 
+		
+		document.getElementById("highLightNode_button").onclick = function() { 
+			var node = Number( document.getElementById("highLightNode_inputbox").value ); 
+			highLightNode(node);
+		} 
+		
+		</script>
+	</div>
+
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="highLightEdge_source_inputbox"> 
+		<input type="text" id="highLightEdge_target_inputbox"> 
+		<button type="button" id = "highLightEdge_button" > HightEdgeNode </button>
+		<script> 
+		
+		document.getElementById("highLightEdge_button").onclick = function() { 
+			var source = Number( document.getElementById("highLightEdge_source_inputbox").value ); 
+			var target = Number( document.getElementById("highLightEdge_target_inputbox").value ); 
+			highLightEdge(source, target);
+		} 
+		
+		</script>
+	</div>
+	
+	
+	
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="removeNode_inputbox"> 
+		<button type="button" id = "removeNode_button" > removeNode </button>
+		<script> 
+		
+		document.getElementById("removeNode_button").onclick = function() { 
+			var node = Number( document.getElementById("removeNode_inputbox").value ); 
+			removeNode(node);
+		} 
+		
+		</script>
+	</div>
+	
+	<div class="row" style="margin-top:20px;">
+		<input type="text" id="removeEdge_source_inputbox"> 
+		<input type="text" id="removeEdge_target_inputbox"> 
+		<button type="button" id = "removeEdge_button" > removeEdge </button>
+		<script> 
+		
+		document.getElementById("removeEdge_button").onclick = function() { 		
+			var source = Number( document.getElementById("removeEdge_source_inputbox").value ); 
+			var target = Number( document.getElementById("removeEdge_target_inputbox").value ); 
+			removeEdge(source, target);
+		} 
+		
+		</script>
+	</div>	
+	
+		<div class="row" style="margin-top:20px;">
+		<button type="button" id = "unHighLightAll_button" > unHightLight_All </button>
+		<script> 
+		
+		document.getElementById("unHighLightAll_button").onclick = function() { 
+			unHighLightAll();
+		} 
+		
+		</script>
+	</div>
+
+</body>
+</html>

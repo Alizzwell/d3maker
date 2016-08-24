@@ -1,19 +1,32 @@
 .node {
-	fill : black ;
+	fill: black;
+	stroke: white;
+	stroke-width : 3px;
 }
 
 .node_selected {
-	fill : #BADA55;
+	fill : red;
 	stroke : black;
-	stroke-width : 3;
+}
+
+.linktext{
+	fill: black;
+	text-align: center;
+	font-size: 20px;
+	font: arial;
+	text-anchor: middle;
+	vertical-align: middle;	
+	font-weight : 900;
 }
 
 .nodetext{
 	fill: white;
 	text-align: center;
-	font-size = 50px;
+	font-size: 	30px;
+	font: sans-serif;
 	text-anchor: middle;
 	vertical-align: middle;	
+	font-weight : 900;
 }
 
 .nodetext_selected {

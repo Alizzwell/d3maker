@@ -104,15 +104,14 @@ function redraw() {
 					dtxs = d.target.x - 1.22 * radius * Math.cos(theta),
 					dtys = d.target.y - 1.22 * radius * Math.sin(theta);
 					var val1 = 3.5, val2 = 10.5;
-					return "M" + d.source.x + "," + d.source.y + "A" + dr + "," + dr + " 0 0 1," + d.target.x + "," + d.target.y + "A" + dr + "," + dr + " 0 0 0," + d.source.x + "," + d.source.y + "M" + dtxs + "," + dtys +  "l" + (val1 * Math.cos(d90 - theta) - val2 * Math.cos(theta)) + "," + (-val1 * Math.sin(d90 - theta) - val2 * Math.sin(theta)) + "L" + (dtxs - val1 * Math.cos(d90 - theta) - val2 * Math.cos(theta)) + "," + (dtys + val1 * Math.sin(d90 - theta) - val2 * Math.sin(theta)) + "z";
-					//return "M" + d.source.x + "," + d.source.y + "L" + d.target.x + "," + d.target.y + "M" + dtxs + "," + dtys +  "l" + (3.5 * Math.cos(d90 - theta) - 10 * Math.cos(theta)) + "," + (-3.5 * Math.sin(d90 - theta) - 10 * Math.sin(theta)) + "L" + (dtxs - 3.5 * Math.cos(d90 - theta) - 10 * Math.cos(theta)) + "," + (dtys + 3.5 * Math.sin(d90 - theta) - 10 * Math.sin(theta)) + "z";
-			});
+					return "M" + d.source.x + "," + d.source.y + "L" + d.target.x + "," + d.target.y;
+				});
 			linktext.attr("transform", function(d){ 
 				var dx = d.target.x - d.source.x,
 				dy = d.target.y - d.source.y,
 				dx = dx * 3, dy = dy * 3,
 				dr = Math.sqrt(dx * dx + dy * dy),
-				theta = Math.atan2(dy, dx) + Math.PI / 11.95,	
+				theta = Math.atan2(dy, dx) + Math.PI / 15,	
 				d90 = Math.PI / 2,
 				dtxs = d.target.x - 3 * radius * Math.cos(theta),
 				dtys = d.target.y - 3 * radius * Math.sin(theta);
@@ -146,6 +145,12 @@ var makeNode = function(id){
 var makeEdge = function(source, target, value){
 	var i;
 	var s_node, t_node;
+	
+	if(source > target) {
+		var t = source;
+		source = target;
+		target = t;
+	}
 	
 	for(i = 0; i < node_number; i++) {
 		if(nodes[i].node_number === source) s_node = nodes[i];
@@ -209,6 +214,13 @@ var removeNode = function(id){
 
 var removeEdge = function(source, target){
 	var i;
+	
+	if(source > target) {
+		var t = source;
+		source = target;
+		target = t;
+	}
+	
 	for (i = 0; i < link_number; i++){
 		if(links[i].id === "link_" + source + "_" + target){
 			links.splice(i, 1);
@@ -235,6 +247,13 @@ var highLightNode = function(id){
 }
 
 var highLightEdge = function(source, target){
+
+	if(source > target) {
+		var t = source;
+		source = target;
+		target = t;
+	}
+	
 	var edge = d3.select("#link_" + source +"_"+target);
 	if(edge != null) { 
 		edge.transition().duration(500).style("stroke", "red");
@@ -248,6 +267,13 @@ var unHighLightNode = function(id) {
 	}
 }
 var unHighLightEdge = function(source, target){
+	
+	if(source > target) {
+		var t = source;
+		source = target;
+		target = t;
+	}
+	
 	var edge = d3.select("#link_" + source +"_"+target);
 	if(edge != null) { 
 		edge.transition().duration(500).style("stroke", "#999");
